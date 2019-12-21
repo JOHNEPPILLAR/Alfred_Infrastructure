@@ -1,9 +1,16 @@
 version: '3.5'
 
 services:
- noip:
-  image: coppit/no-ip
-  volumes:
-   - .:/config
-   - /etc/localtime:/etc/localtime
-  restart: always
+  noip:
+    image: coppit/no-ip
+    volumes:
+      - .:/config
+      - /etc/localtime:/etc/localtime
+    restart: always
+    networks:
+      - server
+
+networks:
+  server:
+    name: server
+    driver: bridge
