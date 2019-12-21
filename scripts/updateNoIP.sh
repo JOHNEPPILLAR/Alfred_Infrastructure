@@ -4,10 +4,9 @@ clear
 echo "Get latest container"
 docker pull coppit/no-ip
 
-echo "Remove old container"
-docker rm -f noip
-
-echo "Run updated container"
+echo "Run the container"
 cd ../NoIP
-docker run -d --name=noip -v /etc/localtime:/etc/localtime -v /config/dir/path:/config coppit/no-ip
+docker-compose -f docker-compose.yml pull
+docker-compose -f docker-compose.yml down --rmi all
+docker-compose -f docker-compose.yml up -d
 cd ..
