@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+ noip:
+  build: coppit/no-ip
+  volumes:
+   - .:/config
+   - /etc/localtime:/etc/localtime
+  restart: always
