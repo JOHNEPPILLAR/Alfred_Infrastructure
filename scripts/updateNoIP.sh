@@ -9,5 +9,5 @@ docker rm -f noip
 
 echo "Run updated container"
 cd ../NoIP
-docker run -d --restart=always --name=noip -v /etc/localtime:/etc/localtime -v /config/dir/path:/config coppit/no-ip
+docker run -d --name=noip -v /etc/localtime:/etc/localtime -v /config/dir/path:/config coppit/no-ip
 cd ..
