@@ -1,7 +1,13 @@
 #!/bin/bash
 clear
 
-echo "Run the container"
+echo "Get latest container"
+docker pull coppit/no-ip
+
+echo "Remove old container"
+docker rm -f noip
+
+echo "Run updated container"
 cd ../NoIP
 docker run --name=noip -d -v /etc/localtime:/etc/localtime -v /config/dir/path:/config coppit/no-ip
 cd ..
