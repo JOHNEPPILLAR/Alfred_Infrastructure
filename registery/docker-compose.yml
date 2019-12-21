@@ -1,0 +1,33 @@
+version: '3.5'
+
+services:
+  registry:
+    image: registry:2
+    hostname: registry
+    container_name: registry
+    restart: always
+    ports:
+      - 5001:443
+    environment:
+      REGISTRY_HTTP_ADDR: 0.0.0.0:443
+      REGISTRY_HTTP_HOST: ${DOCKER_REGISTERY_URL}
+      REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/server.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/server.key
+      REGISTRY_AUTH: 'htpasswd'
+      REGISTRY_AUTH_HTPASSWD_REALM: 'Registry Realm'
+      REGISTRY_AUTH_HTPASSWD_PATH: '/auth/htpasswd'
+    volumes:
+      - ./certs:/certs
+      - ./auth:/auth
+      - data:/var/lib/registry
+    networks:
+      - server
+
+volumes:
+  data:
+
+networks:
+  server:
+    name: server
+    driver: bridge
