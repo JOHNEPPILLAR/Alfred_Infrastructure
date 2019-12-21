@@ -6,7 +6,7 @@ services:
     hostname: no-ip
     container_name: no-ip
     volumes:
-      - /config/noip.conf:/config/noip.conf
+      - .:/config
       - /etc/localtime:/etc/localtime
     restart: always
     networks:
