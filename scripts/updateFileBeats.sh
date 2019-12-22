@@ -1,7 +1,6 @@
 #!/bin/bash
 clear
 
-
 echo "Login to vault"
 vault login -address=$VAULT_URL $VAULT_TOKEN
 
