@@ -7,9 +7,13 @@ services:
     container_name: no-ip
     volumes:
       - /etc/localtime:/etc/localtime
+      - data:/config 
     restart: always
     networks:
       - server
+
+volumes:
+  data:
 
 networks:
   server:
