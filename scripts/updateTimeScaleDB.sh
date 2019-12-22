@@ -2,6 +2,7 @@
 clear
 
 echo "Set env vars"
+vault login $VAULT_TOKEN
 VAULES=$(vault read -format=json secret/alfred/production)
 DATA_STORE_USER_PASSWORD=$(echo $VAULES | jq .data.DataStoreUserPassword)
 
