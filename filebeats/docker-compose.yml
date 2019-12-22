@@ -12,7 +12,9 @@ services:
     volumes:
       - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
       - /var/run/docker.sock:/var/run/docker.sock
-
+    environment:
+      - ELK_HOST=${ELK_HOST}
+          
 networks:
   alfred:
     name: alfred
