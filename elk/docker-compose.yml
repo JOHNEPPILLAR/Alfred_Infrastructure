@@ -2,6 +2,8 @@ version: '3.5'
 
 services:
   elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
     build:
       context: elasticsearch/
       args:
@@ -21,9 +23,11 @@ services:
       ES_JAVA_OPTS: "-Xmx1g -Xms1g"
       ELASTIC_PASSWORD: changeme
     networks:
-      - elk
+      - alfred
 
   logstash:
+    container_name: logstash
+    hostname: logstash
     build:
       context: logstash/
       args:
@@ -43,11 +47,13 @@ services:
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - elk
+      - alfred
     depends_on:
       - elasticsearch
 
   kibana:
+    container_name: kibana
+    hostname: kibana
     build:
       context: kibana/
       args:
