@@ -6,7 +6,7 @@ vault login -address=$VAULT_URL $VAULT_TOKEN
 
 echo "Set env vars"
 VAULES=$(vault read -address=$VAULT_URL -format=json secret/alfred/production)
-export ELK_HOST=$(echo $VAULES | jq .data.ELKHOST)
+export ELK_HOST=$(echo $VAULES | jq .data.ELKHost)
 
 echo "Run the container"
 cd ../filebeats
