@@ -21,6 +21,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
+      ELK_HOST: ${ELK_HOST}  
       ES_JAVA_OPTS: "-Xmx1g -Xms1g"
       ELASTIC_PASSWORD: changeme
     networks:
@@ -47,6 +48,7 @@ services:
       - "5000:5000"
       - "9600:9600"
     environment:
+      ELK_HOST: ${ELK_HOST}
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - alfred
@@ -66,6 +68,8 @@ services:
         source: ./kibana/config/kibana.yml
         target: /usr/share/kibana/config/kibana.yml
         read_only: true
+    environment:
+      ELK_HOST: ${ELK_HOST}
     ports:
       - "5601:5601"
     networks:
