@@ -2,8 +2,8 @@ version: '3.5'
 
 services:
   elasticsearch:
-    container_name: elasticsearch
-    hostname: elasticsearch
+    container_name: elk_elasticsearch
+    hostname: elk_elasticsearch
     build:
       context: elasticsearch/
       args:
@@ -26,8 +26,8 @@ services:
       - alfred
 
   logstash:
-    container_name: logstash
-    hostname: logstash
+    container_name: elk_logstash
+    hostname: elk_logstash
     build:
       context: logstash/
       args:
@@ -52,8 +52,8 @@ services:
       - elasticsearch
 
   kibana:
-    container_name: kibana
-    hostname: kibana
+    container_name: elk_kibana
+    hostname: elk_kibana
     build:
       context: kibana/
       args:
