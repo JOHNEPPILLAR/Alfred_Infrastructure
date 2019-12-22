@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  timescaledb:
+    build: .
+    container_name: timescaledb
+    hostname: timescaledb
+    restart: always
+    volumes:
+      - data:/var/lib/postgresql/data
+    environment:
+      TZ: "Europe/London"
+      POSTGRES_PASSWORD: ${DATA_STORE_USER_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/timescaledb
+    ports:
+      - "5432:5432"
+    networks:
+      - alfred
+
+volumes:
+  data:
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
