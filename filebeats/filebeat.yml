@@ -27,4 +27,8 @@ output.elasticsearch:
   hosts: '${ELK_HOST:}'
   username: '${ELASTICSEARCH_USERNAME:}'
   password: '${ELASTICSEARCH_PASSWORD:}'
-
+  template:
+    name: "filebeat"
+    path: "fields.yml"
+    overwrite: false
+  protocol: "http"
