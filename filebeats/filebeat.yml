@@ -25,8 +25,8 @@ filebeat.config:
 
 output.elasticsearch:
   hosts: '${ELK_HOST:}'
-  username: '${ELASTICSEARCH_USERNAME:}'
-  password: '${ELASTICSEARCH_PASSWORD:}'
+  username: 'elastic'
+  password: 'changeme'
   template:
     name: "filebeat"
     path: "fields.yml"
