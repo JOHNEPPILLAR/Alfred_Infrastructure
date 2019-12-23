@@ -4,8 +4,8 @@ services:
   alfred_lights_service:
     image: ${DOCKER_REGISTERY_URL}/alfred_lights_service:latest
     container_name: alfred_lights_service
-    restart: always
     hostname: alfred_lights_service
+    restart: always
     networks:
       - alfred
     command: npm run start
@@ -14,6 +14,8 @@ services:
       - MOCK=${MOCK}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
 
 networks:
   alfred:
