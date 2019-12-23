@@ -15,12 +15,12 @@ services:
         com.centurylinklabs.watchtower.enable: "true"
     command: --interval 120 --label-enable
     environment:
-      - WATCHTOWER_NOTIFICATIONS: slack
-      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL: ${SLACK_WEB_HOOK}
-      - WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER: WatchTower
-      - WATCHTOWER_NOTIFICATION_SLACK_CHANNEL: container_updates
-      - WATCHTOWER_NOTIFICATION_SLACK_ICON_EMOJI: ":whale:"
-      - WATCHTOWER_NOTIFICATION_SLACK_ICON_URL: https://avatars2.githubusercontent.com/u/25100863?s=40&v=4
+      - WATCHTOWER_NOTIFICATIONS=slack
+      - WATCHTOWER_NOTIFICATION_SLACK_HOOK_URL=${SLACK_WEB_HOOK}
+      - WATCHTOWER_NOTIFICATION_SLACK_IDENTIFIER=WatchTower
+      - WATCHTOWER_NOTIFICATION_SLACK_CHANNEL=container_updates
+      - WATCHTOWER_NOTIFICATION_SLACK_ICON_EMOJI=:whale:
+      - WATCHTOWER_NOTIFICATION_SLACK_ICON_URL=https://avatars2.githubusercontent.com/u/25100863?s=40&v=4
 
 networks:
   server:
