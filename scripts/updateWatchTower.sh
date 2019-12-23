@@ -5,7 +5,8 @@ vault login -address=$VAULT_URL $VAULT_TOKEN
 
 echo "Set env vars"
 VAULES=$(vault read -address=$VAULT_URL -format=json secret/alfred/production)
-export SLACK_WEB_HOOK=$(echo $VAULES | jq .data.SlackWebHook)
+SLACK_WEB_HOOK=$(echo $VAULES | jq .data.SlackWebHook)
+export SLACK_WEB_HOOK=$(echo $SLACK_WEB_HOOK//\"}
 
 echo "Run the container"
 cd ../watchtower
