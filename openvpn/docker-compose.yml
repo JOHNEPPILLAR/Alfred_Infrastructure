@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  openvpn:
+    cap_add:
+      - NET_ADMIN
+    image: kylemanna/openvpn
+    container_name: openvpn
+    hostname: openvpn
+    ports:
+      - "3000:1194/udp"
+    restart: always
+    volumes:
+      - data:/etc/openvpn
+    labels:
+      - com.centurylinklabs.watchtower.enable: "true"
+  
+  volumes:
+    data:
