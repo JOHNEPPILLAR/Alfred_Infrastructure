@@ -16,6 +16,13 @@ services:
         target: /etc/openvpn
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-  
+    networks:
+      - server
+
 volumes:
   data:
+
+networks:
+  server:
+    name: server
+    driver: bridge
