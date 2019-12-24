@@ -13,7 +13,7 @@ services:
     volumes:
       - data:/etc/openvpn
     labels:
-      - com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: "true"
   
   volumes:
     data:
