@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  alfred_netatmo_data_collector_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_netatmo_data_collector_service:latest
+    container_name: alfred_netatmo_data_collector_service
+    hostname: alfred_netatmo_data_collector_service
+    restart: always
+    networks:
+      - alfred
+    command: npm run start
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - MOCK=${MOCK}
+      - VAULT_URL=${VAULT_URL}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    ports:
+      - '3979:3978'
+  
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
