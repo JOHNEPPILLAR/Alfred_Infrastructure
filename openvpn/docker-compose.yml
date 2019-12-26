@@ -11,7 +11,8 @@ services:
       - "3000:1194/udp"
     restart: always
     volumes:
-      - data/conf:/etc/openvpn
+      - ./openvpn-data/conf:/etc/openvpn
+      - data:/etc/data
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     networks:
