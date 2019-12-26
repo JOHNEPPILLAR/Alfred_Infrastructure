@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  alfred_lights_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_iot_battery_service:latest
+    container_name: alfred_iot_battery_service
+    hostname: alfred_iot_battery_service
+    restart: always
+    networks:
+      - alfred
+    command: npm run start
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - MOCK=${MOCK}
+      - VAULT_URL=${VAULT_URL}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
