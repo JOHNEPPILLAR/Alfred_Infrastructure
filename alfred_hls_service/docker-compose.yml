@@ -1,0 +1,32 @@
+version: '3.5'
+
+services:
+  alfred_hls_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_hls_service:latest
+    container_name: alfred_hls_service
+    hostname: alfred_hls_service
+    restart: always
+    networks:
+      - alfred
+    command: npm run start
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - MOCK=${MOCK}
+      - VAULT_URL=${VAULT_URL}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    volumes:
+      - video_data:/home/nodejs/app/recordings
+    ports:
+      - '3980:3978'
+  
+volumes:
+  video_data:
+    external:
+      name: video_data
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
