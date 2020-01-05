@@ -17,7 +17,7 @@ services:
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     volumes:
-      - video_data:/home/nodejs/app/recordings
+      - video_data:/home/nodejs/app/media:rw
     ports:
       - '3980:3978'
   
