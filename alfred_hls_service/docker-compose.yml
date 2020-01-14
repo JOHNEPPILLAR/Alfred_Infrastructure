@@ -20,7 +20,9 @@ services:
       - video_data:/home/nodejs/app/media:rw
     ports:
       - '3980:3978'
-  
+    extra_hosts:
+      - "timescaledb:192.168.1.3"
+
 volumes:
   video_data:
     external:
