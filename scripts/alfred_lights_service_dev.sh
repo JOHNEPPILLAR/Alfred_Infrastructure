@@ -4,6 +4,7 @@ clear
 echo "Set env vars"
 export ENVIRONMENT="development"
 export MOCK="true"
+export PORT=3978
 
 echo "Run the container"
 cd ../alfred_lights_service
