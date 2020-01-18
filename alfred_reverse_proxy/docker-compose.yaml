@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  reverse_proxy:
+    image: nginx:alpine
+    container_name: reverse_proxy
+    hostname: reverse_proxy
+    ports:
+      - 3979:3979
+    volumes:
+      - ./volumes/config:/etc/nginx/conf.d
+      - ./volumes/certs:/etc/ssl/private
+    restart: always
+    networks:
+      - alfred
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
