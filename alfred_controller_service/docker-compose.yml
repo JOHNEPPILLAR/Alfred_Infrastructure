@@ -17,8 +17,6 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-    ports:
-      - '3981:3978'
   
 networks:
   alfred:

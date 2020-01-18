@@ -5,7 +5,7 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3978
-export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3981"
+export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3978"
 
 echo "Run the container"
 cd ../alfred_lights_service
