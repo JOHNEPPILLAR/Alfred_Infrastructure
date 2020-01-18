@@ -12,6 +12,7 @@ services:
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - MOCK=${MOCK}
+      - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
     labels:

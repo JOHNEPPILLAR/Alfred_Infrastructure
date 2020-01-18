@@ -4,6 +4,7 @@ clear
 echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
+export PORT=3978
 export ALFRED_FLOWERCARE_SERVICE="https://kidsroomserver:3981"
 export ALFRED_COMMUTE_SERVICE="https://alfred_commute_service:3978"
 export ALFRED_NETATMO_SERVICE="https://alfred_netatmo_data_collector_service:3978"

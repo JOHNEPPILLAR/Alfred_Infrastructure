@@ -1,13 +1,11 @@
 version: '3.7'
 
 services:
-  alfred_health_service:
-    image: ${DOCKER_REGISTERY_URL}/alfred_health_service:latest
-    container_name: alfred_health_service
-    hostname: alfred_health_service
+  alfred_controller_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_controller_service:latest
+    container_name: alfred_controller_service
+    hostname: alfred_controller_service
     restart: always
-    ports:
-      - '3982:3978'
     networks:
       - alfred
     command: npm run start
@@ -19,7 +17,7 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-
+  
 networks:
   alfred:
     name: alfred
