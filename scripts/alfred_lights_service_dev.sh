@@ -3,9 +3,9 @@ clear
 
 echo "Set env vars"
 export ENVIRONMENT="development"
-export MOCK="false"
+export MOCK="true"
 export PORT=3978
-export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3979"
+export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3978"
 
 
 echo "Run the container"
