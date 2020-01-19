@@ -6,8 +6,6 @@ services:
     container_name: alfred_health_service
     hostname: alfred_health_service
     restart: always
-    ports:
-      - '3982:3978'
     networks:
       - alfred
     command: npm run start
