@@ -1,2 +1,4 @@
 registery/auth
 registery/certs
+alfred_reverse_proxy_dev/volumes/certs/
+alfred_reverse_proxy_prod/volumes/certs/
