@@ -19,7 +19,8 @@ services:
       com.centurylinklabs.watchtower.enable: "true"
     extra_hosts:
       - "timescaledb:192.168.1.3"
-    ports: 3982:3978
+    ports:
+      - '3982:3978'
 
 networks:
   alfred:
