@@ -11,4 +11,3 @@ xpack.monitoring.ui.container.elasticsearch.enabled: true
 elasticsearch.username: elastic
 elasticsearch.password: changeme
 
-setup.dashboards.enabled: true
