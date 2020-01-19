@@ -6,7 +6,6 @@ services:
     container_name: reverse_proxy
     hostname: reverse_proxy
     ports:
-      - 5001:5001
       - 3981:3981
       - 3982:3982
       - 3983:3983
