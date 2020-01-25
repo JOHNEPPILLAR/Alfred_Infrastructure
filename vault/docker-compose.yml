@@ -1,0 +1,28 @@
+version: '3.5'
+services:
+  vault:
+    image: vault
+    container_name: vault
+    hostname: vault
+    ports:
+      - "8200:8200"
+    restart: always
+    volumes:
+      - logs:/vault/logs
+      - file:/vault/file
+      - config:/vault/config
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json
+    networks:
+      - server
+
+volumes:
+  logs:
+  file:
+  config:
+
+networks:
+  server:
+    name: server
+    driver: bridge
