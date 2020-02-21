@@ -17,10 +17,6 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-    extra_hosts:
-      - "timescaledb:192.168.85.12"
-    ports:
-      - '3982:3978'
 
 networks:
   alfred:
