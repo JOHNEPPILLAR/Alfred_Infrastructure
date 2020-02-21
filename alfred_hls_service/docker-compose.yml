@@ -22,7 +22,7 @@ services:
     ports:
       - '3980:3978'
     extra_hosts:
-      - "timescaledb:192.168.1.3"
+      - "timescaledb:192.168.85.12"
 
 volumes:
   video_data:
