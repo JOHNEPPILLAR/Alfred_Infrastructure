@@ -4,7 +4,7 @@ clear
 echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
-export PORT=3983
+export PORT=3978
 
 echo "Run the container"
 cd ../alfred_tp_link_service
