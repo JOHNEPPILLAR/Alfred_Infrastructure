@@ -13,7 +13,7 @@ services:
       - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - ELK_HOST=${ELK_HOST}
+      - ELK_HOST=192.168.85.12:9200
           
 networks:
   alfred:
