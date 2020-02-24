@@ -15,4 +15,10 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
+    networks:
+      - alfred
 
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
