@@ -12,8 +12,6 @@ services:
     restart: always
     volumes:
       - data:/etc/data
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
     networks:
       - server
 
