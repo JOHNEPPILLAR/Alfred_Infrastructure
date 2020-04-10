@@ -13,6 +13,7 @@ services:
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
+      - ALFRED_CONTROLLER_SERVICE=${ALFRED_CONTROLLER_SERVICE}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     networks:

@@ -7,7 +7,6 @@ export MOCK="true"
 export PORT=3978
 export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3978"
 
-
 echo "Run the container"
 cd ../alfred_lights_service
 docker-compose -f docker-compose.yml pull
