@@ -12,7 +12,7 @@ docker exec -it timescaledb bash -c 'pg_dump -Fc -f /var/lib/postgresql/data/sch
 docker exec -it timescaledb bash -c 'pg_dump -Fc -f /var/lib/postgresql/data/tplink.bak tplink -U postgres'
 
 echo "Copy bak files to local storage"
-cp /var/lib/docker/volumes/timescaledb_data/_data/*.bak /home/jp/DockerBackup/TimeScaleDB
+cp /var/lib/docker/volumes/timescale_db_data/_data/*.bak /home/jp/DockerBackup/TimeScaleDB
 
 echo "Copy bak files to longterm storage"
 cp /home/jp/DockerBackup/TimeScaleDB/* /mnt/local_share/Current/TimeScaleDB
