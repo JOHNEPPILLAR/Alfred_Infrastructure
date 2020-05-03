@@ -1,4 +1,4 @@
-FROM timescale/timescaledb:latest-pg11
+FROM timescale/timescaledb:latest-pg12
 
 RUN apk add --no-cache tzdata
 
