@@ -5,7 +5,7 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3978
-export ALFRED_CONTROLLER_SERVICE="https://alfred_controller_service:3978"
+export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3978"
 
 echo "Run the container"
 cd ../alfred_tp_link_service
@@ -15,3 +15,4 @@ docker-compose -f docker-compose.yml down --rmi all
 docker-compose -f docker-compose.yml up -d
 docker logout
 cd ..
+docker restart reverse_proxy
