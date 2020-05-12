@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  alfred_weather_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_weather_service:latest
+    container_name: alfred_weather_service
+    hostname: alfred_weather_service
+    restart: always
+    networks:
+      - alfred
+    command: npm run start
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - MOCK=${MOCK}
+      - PORT=${PORT}
+      - ALFRED_NETATMO_SERVICE=${ALFRED_NETATMO_SERVICE}
+      - ALFRED_DYSON_SERVICE=${ALFRED_DYSON_SERVICE}
+      - VAULT_URL=${VAULT_URL}
+      - VAULT_TOKEN=${VAULT_TOKEN}
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge

@@ -12,4 +12,5 @@ echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_
 docker-compose -f docker-compose.yml pull
 docker-compose -f docker-compose.yml down --rmi all
 docker-compose -f docker-compose.yml up -d
+docker logout
 cd ..
