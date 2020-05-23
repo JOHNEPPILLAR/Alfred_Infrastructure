@@ -2,7 +2,9 @@ version: '3.7'
 
 services:
   alfred_flowercare_data_collector_service:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-rpi
     container_name: alfred_flowercare_data_collector_service
     hostname: alfred_flowercare_data_collector_service
     restart: always
