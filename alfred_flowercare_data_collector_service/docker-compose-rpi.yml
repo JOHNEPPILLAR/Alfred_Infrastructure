@@ -15,5 +15,3 @@ services:
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
-    labels:
-      com.centurylinklabs.watchtower.enable: "true"
