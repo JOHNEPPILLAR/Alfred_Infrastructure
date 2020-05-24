@@ -5,6 +5,8 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3981
+export NO_SCHEDULE="false"
+export ZONE="1,2"
 
 echo "Run the container"
 cd ../alfred_flowercare_data_collector_service
