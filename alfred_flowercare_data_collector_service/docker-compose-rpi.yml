@@ -17,6 +17,3 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
       - NO_SCHEDULE=${NO_SCHEDULE}
       - ZONE=${ZONE}
-      - NOBLE_REPORT_ALL_HCI_EVENTS=1
-      - DEBUG="miflora:*"
-
