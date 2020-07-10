@@ -15,9 +15,11 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
       - ALFRED_WEATHER_SERVICE=${ALFRED_WEATHER_SERVICE}
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: 'true'
     networks:
       - alfred
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
 
 networks:
   alfred:
