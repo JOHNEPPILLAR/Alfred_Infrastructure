@@ -4,4 +4,3 @@
 server.name: kibana
 server.host: 0.0.0.0
 elasticsearch.hosts: ['http://192.168.85.12:9200']
-setup.dashboards.enabled: true
