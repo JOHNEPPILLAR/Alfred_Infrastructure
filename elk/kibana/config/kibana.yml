@@ -2,12 +2,6 @@
 ## https://github.com/elastic/kibana/blob/master/src/dev/build/tasks/os_packages/docker_generator/templates/kibana_yml.template.js
 #
 server.name: kibana
-server.host: "0"
-elasticsearch.hosts: [ "http://192.168.85.12:9200" ]
-xpack.monitoring.ui.container.elasticsearch.enabled: true
-
-## X-Pack security credentials
-#
-elasticsearch.username: elastic
-elasticsearch.password: changeme
-
+server.host: 0.0.0.0
+elasticsearch.hosts: ['http://192.168.85.12:9200']
+setup.dashboards.enabled: true

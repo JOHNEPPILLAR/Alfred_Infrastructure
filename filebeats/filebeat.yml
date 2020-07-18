@@ -29,9 +29,6 @@ output.elasticsearch:
     path: 'fields.yml'
     overwrite: true
   protocol: 'http'
-  # identification required for X-pack
-  username: ''
-  password: ''
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
