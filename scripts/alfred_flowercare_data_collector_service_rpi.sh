@@ -6,7 +6,7 @@ export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3981
 export NO_SCHEDULE="true"
-export ZONE="3"
+export ZONE="3,4"
 
 echo "Get latest code"
 cd ~/Alfred_FlowerCare_Data_Collector_Service
