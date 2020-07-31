@@ -6,6 +6,7 @@ export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3978
 export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3978"
+export TRACE_LEVEL="debug"
 
 echo "Run the container"
 cd ../alfred_tp_link_service
