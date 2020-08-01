@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   alfred_flowercare_data_collector_service:
-    build: .
+    image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service:rpi
     container_name: alfred_flowercare_data_collector_service
     hostname: alfred_flowercare_data_collector_service
     restart: always
@@ -18,6 +18,5 @@ services:
       - NO_SCHEDULE=${NO_SCHEDULE}
       - ZONE=${ZONE}
       - TRACE_LEVEL=${TRACE_LEVEL}
-    version_tag:
-      extends: build
-      image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service:rpi
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'

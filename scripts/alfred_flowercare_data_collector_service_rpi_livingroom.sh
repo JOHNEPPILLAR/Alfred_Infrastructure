@@ -17,9 +17,15 @@ echo "Move scripts into location"
 cp ~/Alfred_Infrastructure/alfred_flowercare_data_collector_service/* .
 
 echo "Build the container"
-docker-compose -f docker-compose-rpi.yml down --rmi all
-docker-compose -f docker-compose-rpi.yml up -d --build
+docker build . -t $DOCKER_REGISTERY_URL/alfred_flowercare_data_collector_service:rpi
 
-echo "Push new build to registery"
+echo "Push to registery"
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-docker push ${{ secrets.DOCKER_REGISTERY_URL }}/alfred_flowercare_data_collector_service:rpi
+docker push $DOCKER_REGISTERY_URL/alfred_flowercare_data_collector_service:rpi
+
+if [ $1 == "run" ]
+then
+    echo "Run container"
+    docker-compose -f docker-compose-rpi.yml down --rmi all
+    docker-compose -f docker-compose-rpi.yml up -d
+fi
