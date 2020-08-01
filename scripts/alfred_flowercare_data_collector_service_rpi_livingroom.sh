@@ -22,4 +22,4 @@ docker-compose -f docker-compose-rpi.yml up -d --build
 
 echo "Push new build to registery"
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-docker push ${{ secrets.DOCKER_REGISTERY_URL }}/alfred_flowercare_data_collector_service_rpi
+docker push ${{ secrets.DOCKER_REGISTERY_URL }}/alfred_flowercare_data_collector_service:rpi

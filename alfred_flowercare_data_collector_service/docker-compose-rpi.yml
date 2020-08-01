@@ -20,4 +20,4 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     version_tag:
       extends: build
-      image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service_rpi
+      image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service:rpi
