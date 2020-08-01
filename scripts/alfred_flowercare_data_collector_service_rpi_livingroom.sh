@@ -26,6 +26,5 @@ docker push $DOCKER_REGISTERY_URL/alfred_flowercare_data_collector_service:rpi
 if [ $1 == "run" ]
 then
     echo "Run container"
-    docker-compose -f docker-compose-rpi.yml down --rmi all
     docker-compose -f docker-compose-rpi.yml up -d
 fi
