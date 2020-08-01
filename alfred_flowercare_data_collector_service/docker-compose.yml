@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   alfred_flowercare_data_collector_service:
-    image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service
+    image: ${DOCKER_REGISTERY_URL}/alfred_flowercare_data_collector_service:intel
     container_name: alfred_flowercare_data_collector_service
     hostname: alfred_flowercare_data_collector_service
     restart: always
