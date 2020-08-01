@@ -7,6 +7,7 @@ export MOCK="false"
 export PORT=3981
 export NO_SCHEDULE="true"
 export ZONE="3,4"
+export TRACE_LEVEL="debug"
 
 echo "Get latest code"
 cd ~/Alfred_FlowerCare_Data_Collector_Service

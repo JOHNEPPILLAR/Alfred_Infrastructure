@@ -7,6 +7,7 @@ export MOCK="false"
 export PORT=3978
 export ALFRED_NETATMO_SERVICE="https://alfred_netatmo_data_collector_service:3978"
 export ALFRED_DYSON_SERVICE="https://alfred_dyson_data_collector_service:3978"
+export TRACE_LEVEL="debug"
 
 echo "Run the container"
 cd ../alfred_weather_service

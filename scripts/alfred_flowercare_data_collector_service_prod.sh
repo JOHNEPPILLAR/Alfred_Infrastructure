@@ -7,6 +7,7 @@ export MOCK="false"
 export PORT=3981
 export NO_SCHEDULE="false"
 export ZONE="1,2"
+export TRACE_LEVEL="debug"
 
 echo "Run the container"
 cd ../alfred_flowercare_data_collector_service

@@ -15,14 +15,15 @@ services:
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
+      - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: 'true'
     volumes:
       - video_data:/home/nodejs/app/media:rw
     ports:
       - '3980:3978'
     extra_hosts:
-      - "timescaledb:192.168.85.12"
+      - 'timescaledb:192.168.85.12'
 
 volumes:
   video_data:

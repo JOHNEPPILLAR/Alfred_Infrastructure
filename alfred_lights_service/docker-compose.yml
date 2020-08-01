@@ -16,8 +16,9 @@ services:
       - ALFRED_WEATHER_SERVICE=${ALFRED_WEATHER_SERVICE}
       - VAULT_URL=${VAULT_URL}
       - VAULT_TOKEN=${VAULT_TOKEN}
+      - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
-      com.centurylinklabs.watchtower.enable: "true"
+      com.centurylinklabs.watchtower.enable: 'true'
 
 networks:
   alfred:

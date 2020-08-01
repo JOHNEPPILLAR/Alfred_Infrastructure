@@ -5,6 +5,7 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3978
+export TRACE_LEVEL="debug"
 
 echo "Run the container"
 cd ../alfred_dyson_data_collector_service

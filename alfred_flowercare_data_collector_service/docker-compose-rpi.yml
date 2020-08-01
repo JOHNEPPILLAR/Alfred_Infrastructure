@@ -17,3 +17,4 @@ services:
       - VAULT_TOKEN=${VAULT_TOKEN}
       - NO_SCHEDULE=${NO_SCHEDULE}
       - ZONE=${ZONE}
+      - TRACE_LEVEL=${TRACE_LEVEL}
