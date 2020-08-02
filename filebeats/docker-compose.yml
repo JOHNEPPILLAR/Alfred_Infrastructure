@@ -14,7 +14,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ELK_HOST=192.168.85.12:9200
-          
+      - ES_UN=${ES_UN}
+      - ES_PWD=${ES_PWD}
+
 networks:
   alfred:
     name: alfred
