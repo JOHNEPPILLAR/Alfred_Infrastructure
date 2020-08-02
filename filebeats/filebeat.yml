@@ -24,6 +24,8 @@ filebeat.config.modules:
 
 output.elasticsearch:
   hosts: ['192.168.85.12:9200']
+  username: '${ES_UN}'
+  password: '${ES_PWD}'
   template:
     name: 'filebeat'
     path: 'fields.yml'
