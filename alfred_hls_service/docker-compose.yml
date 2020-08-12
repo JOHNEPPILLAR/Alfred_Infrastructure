@@ -18,17 +18,10 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
-    volumes:
-      - video_data:/home/nodejs/app/media:rw
     ports:
       - '3980:3978'
     extra_hosts:
       - 'timescaledb:192.168.85.12'
-
-volumes:
-  video_data:
-    external:
-      name: video_data
 
 networks:
   alfred:
