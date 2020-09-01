@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Pull latest image"
-docker pull portainer/portainer
+docker pull portainer/portainer-ce
 
 echo "Remove old image"
 docker stop portainer
