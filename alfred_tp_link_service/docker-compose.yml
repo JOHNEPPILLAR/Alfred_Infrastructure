@@ -17,10 +17,5 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
-    networks:
-      - alfred
-
-networks:
-  alfred:
-    name: alfred
-    driver: bridge
+    network_mode: 'host'
+    privileged: true

@@ -4,7 +4,7 @@ clear
 echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
-export PORT=3978
+export PORT=3985
 export TRACE_LEVEL="debug"
 
 echo "Run the container"
