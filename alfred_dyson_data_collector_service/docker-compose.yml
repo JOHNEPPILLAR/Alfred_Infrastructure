@@ -6,8 +6,8 @@ services:
     container_name: alfred_dyson_data_collector_service
     hostname: alfred_dyson_data_collector_service
     restart: always
-    networks:
-      - alfred
+    network_mode: 'host'
+    privileged: true
     command: npm run start
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
@@ -18,8 +18,3 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
-
-networks:
-  alfred:
-    name: alfred
-    driver: bridge
