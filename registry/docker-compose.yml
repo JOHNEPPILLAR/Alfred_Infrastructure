@@ -12,7 +12,7 @@ services:
       REGISTRY_HTTP_ADDR: 0.0.0.0:443
       REGISTRY_HTTP_HOST: ${DOCKER_REGISTERY_URL}
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
-      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/server.pem
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/server.crt
       REGISTRY_HTTP_TLS_KEY: /certs/server.key
       REGISTRY_AUTH: 'htpasswd'
       REGISTRY_AUTH_HTPASSWD_REALM: 'Registry Realm'
