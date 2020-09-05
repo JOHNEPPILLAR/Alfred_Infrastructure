@@ -10,7 +10,7 @@ export SLACK_WEB_HOOK=$(echo "${SLACK_WEB_HOOK:1:-1}")
 
 echo "Run the container"
 cd ../watchtower
+docker-compose -f docker-compose.yml down
 docker-compose -f docker-compose.yml pull
-docker-compose -f docker-compose.yml down --rmi all
-docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-compose.yml up -d --build
 cd ..
