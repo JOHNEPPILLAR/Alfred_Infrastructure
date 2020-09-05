@@ -5,8 +5,8 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3981
-export NO_SCHEDULE="false"
-export ZONE="1,2"
+export NO_SCHEDULE="true"
+export ZONE="3,4"
 export TRACE_LEVEL="debug"
 
 echo "Run the container"

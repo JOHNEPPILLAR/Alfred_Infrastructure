@@ -12,7 +12,7 @@ export TRACE_LEVEL="debug"
 echo "Run the container"
 cd ../alfred_flowercare_data_collector_service
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-docker-compose -f docker-compose-rpi.yml down --rmi all
-docker-compose -f docker-compose-rpi.yml pull
-docker-compose -f docker-compose-rpi.yml up -d
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml pull
+docker-compose -f docker-compose.yml up -d
 docker logout
