@@ -10,6 +10,7 @@ services:
       - server
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /docker_reg_config.json:/config.json
     command: --interval 120 --label-enable
     environment:
       - WATCHTOWER_NOTIFICATIONS=slack
