@@ -5,7 +5,7 @@ echo "Set env vars"
 export ENVIRONMENT="production"
 export MOCK="false"
 export PORT=3986
-export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3978"
+export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3981/weather
 export TRACE_LEVEL="info"
 
 echo "Run the container"
