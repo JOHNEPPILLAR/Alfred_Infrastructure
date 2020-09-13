@@ -24,10 +24,12 @@ case $ENVIRONMENT in
     development ) export MOCK="true";;
     *) echo "Invalid enviroment, exit setup"; exit;;
 esac
+export ENVIRONMENT=$ENVIRONMENT
 
 export PORT=3978
 export ALFRED_NETATMO_SERVICE="https://alfred_netatmo_data_collector_service:3978"
 export ALFRED_DYSON_SERVICE="https://alfred_dyson_data_collector_service:3978"
+export TRACE_LEVEL=""
 
 SETUP_VAULT="$2"
 if [ -z "$SETUP_VAULT" ]
