@@ -16,7 +16,8 @@ services:
       - ALFRED_NETATMO_SERVICE=${ALFRED_NETATMO_SERVICE}
       - ALFRED_DYSON_SERVICE=${ALFRED_DYSON_SERVICE}
       - VAULT_URL=${VAULT_URL}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - APP_ROLE_ID=${APP_ROLE_ID}
+      - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'

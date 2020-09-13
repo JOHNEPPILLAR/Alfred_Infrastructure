@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - alfred
+    volumes:
+      - grafana:/var/lib/grafana
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    hostname: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    networks:
+      - alfred
+    volumes:
+      - influxdb:/var/lib/influxdb
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
+
+volumes:
+  grafana:
+    external: true
+  influxdb:
+    external: true
