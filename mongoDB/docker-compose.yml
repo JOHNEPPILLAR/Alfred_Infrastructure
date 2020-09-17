@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $DATA_STORE_USER
+      MONGO_INITDB_ROOT_PASSWORD: $DATA_STORE_USER_PASSWORD
+    container_name: mongo
+    hostname: mongo
+    networks:
+      - alfred
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+      - mongo_config:/data/configdb
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+volumes:
+  mongodb:
+  mongo_config:
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge

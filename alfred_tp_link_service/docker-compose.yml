@@ -12,7 +12,8 @@ services:
       - MOCK=${MOCK}
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - APP_ROLE_ID=${APP_ROLE_ID}
+      - APP_TOKEN=${APP_TOKEN}
       - ALFRED_WEATHER_SERVICE=${ALFRED_WEATHER_SERVICE}
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
