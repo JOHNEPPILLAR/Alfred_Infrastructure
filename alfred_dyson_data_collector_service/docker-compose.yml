@@ -6,15 +6,21 @@ services:
     container_name: alfred_dyson_data_collector_service
     hostname: alfred_dyson_data_collector_service
     restart: always
-    network_mode: 'host'
-    privileged: true
+    networks:
+      - alfred
     command: npm run start
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - MOCK=${MOCK}
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - APP_ROLE_ID=${APP_ROLE_ID}
+      - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
