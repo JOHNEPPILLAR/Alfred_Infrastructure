@@ -79,9 +79,9 @@ export APP_TOKEN=${APP_TOKEN:1:${#APP_TOKEN}-2}
 
 echo "Runing the container..."
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-#docker-compose -f docker-compose.yml down
-#docker-compose -f docker-compose.yml pull
-#docker-compose -f docker-compose.yml up -d --build
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml pull
+docker-compose -f docker-compose.yml up -d --build
 docker logout
 
 echo "Purge docker images..."
