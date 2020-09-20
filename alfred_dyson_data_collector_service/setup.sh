@@ -2,7 +2,7 @@
 clear
 
 echo "Setup/run alfred dyson data collector service docker container"
-echo "-------------------------------------------------"
+echo "--------------------------------------------------------------"
 echo ""
 
 echo "Loging into vault..."
