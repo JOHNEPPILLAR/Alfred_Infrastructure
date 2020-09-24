@@ -39,7 +39,15 @@ fi
 
 case $ZONE in
     "kids bedroom" )  export ZONE="1,2"
-                      export NO_SCHEDULE="false";;
+                      export NO_SCHEDULE="false"
+                      echo "Creating certs..."
+                      mkcert alfred_flowercare_data_collector_service
+
+                      echo "Storing certs..."
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
+                      echo "Tidying up certs..."
+                      rm *.pem;;
     office )          export ZONE="3,4"
                       export NO_SCHEDULE="true";;
     "living room" )   export ZONE="5"
@@ -71,15 +79,6 @@ case $SETUP_VAULT in
     No )    echo "Skipping vault setup"
             ;;
 esac
-
-echo "Creating certs..."
-mkcert alfred_flowercare_data_collector_service
-
-echo "Storing certs..."
-vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
-vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
-echo "Tidying up certs..."
-rm *.pem
 
 echo "Creating access token..."
 VAULES=$(vault read -address=$VAULT_URL -format=json auth/approle/role/alfred_flowercare_data_collector_service_role/role-id)
