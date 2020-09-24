@@ -26,10 +26,32 @@ case $ENVIRONMENT in
 esac
 export ENVIRONMENT=$ENVIRONMENT
 
-export PORT=3978
+ENVIRONMENT="$2"
+if [ -z "$ZONE" ]
+then
+    echo ""
+    echo "Select an zone:"
+    select ZONE in "kids bedroom" "office" "living room"; 
+    do
+        break
+    done
+fi
+
+case $ZONE in
+    "kids bedroom" )  export ZONE="1,2"
+                      export NO_SCHEDULE="false";;
+    office )          export ZONE="3,4"
+                      export NO_SCHEDULE="true";;
+    "living room" )   export ZONE="5"
+                      export NO_SCHEDULE="true";;
+    *) echo "Invalid zone, exit setup"; exit;;
+esac
+export ZONE=$ZONE
+
+export PORT=3981
 export TRACE_LEVEL=""
 
-SETUP_VAULT="$2"
+SETUP_VAULT="$3"
 if [ -z "$SETUP_VAULT" ]
 then
     echo ""
