@@ -75,6 +75,18 @@ case $SETUP_VAULT in
     Yes )   echo "Setup policies..."
             vault policy write -address=$VAULT_URL alfred_flowercare_data_collector_service policy.hcl
             vault write -address=$VAULT_URL auth/approle/role/alfred_flowercare_data_collector_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_flowercare_data_collector_service  
+
+            echo "Storing config..."
+            read -p "Linktap username: " LinkTapUser
+            vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/LinkTapUser data=$LinkTapUser
+            read -p "Linktap key: " LinkTapKey
+            vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/LinkTapKey data=$LinkTapKey
+            read -p "Linktap gateway id: " LinkTapGatewayID
+            vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/LinkTapGatewayID data=$LinkTapGatewayID
+            read -p "Linktap zone 1 id: " LinkTapZone1ID
+            vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/LinkTapZone1ID data=$LinkTapZone1ID
+            read -p "Linktap zone 2 id: " LinkTapZone2ID
+            vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/LinkTapZone2ID data=$LinkTapZone2ID
             ;;
     No )    echo "Skipping vault setup"
             ;;
