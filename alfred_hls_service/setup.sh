@@ -25,7 +25,7 @@ case $ENVIRONMENT in
     *) echo "Invalid enviroment, exit setup"; exit;;
 esac
 export ENVIRONMENT=$ENVIRONMENT
-export PORT=3980
+export PORT=3978
 export TRACE_LEVEL=""
 
 SETUP_VAULT="$2"
