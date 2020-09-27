@@ -20,7 +20,7 @@ services:
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
     ports:
-      - '3980:3978'
+      - '3980:${PORT}'
 
 networks:
   alfred:
