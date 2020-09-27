@@ -14,14 +14,13 @@ services:
       - MOCK=${MOCK}
       - PORT=${PORT}
       - VAULT_URL=${VAULT_URL}
-      - VAULT_TOKEN=${VAULT_TOKEN}
+      - APP_ROLE_ID=${APP_ROLE_ID}
+      - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
     ports:
       - '3980:3978'
-    extra_hosts:
-      - 'timescaledb:192.168.85.12'
 
 networks:
   alfred:
