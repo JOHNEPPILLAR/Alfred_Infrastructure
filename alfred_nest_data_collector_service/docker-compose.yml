@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  alfred_commute_service:
+    image: ${DOCKER_REGISTERY_URL}/alfred_nest_data_collector_service:latest
+    container_name: alfred_nest_data_collector_service
+    hostname: alfred_nest_data_collector_service
+    restart: always
+    networks:
+      - alfred
+    command: node lib/server/server.js
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT}
+      - MOCK=${MOCK}
+      - PORT=${PORT}
+      - VAULT_URL=${VAULT_URL}
+      - APP_ROLE_ID=${APP_ROLE_ID}
+      - APP_TOKEN=${APP_TOKEN}
+      - TRACE_LEVEL=${TRACE_LEVEL}
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
