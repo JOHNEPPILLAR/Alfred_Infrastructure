@@ -46,11 +46,14 @@ case $SETUP_VAULT in
             vault policy write -address=$VAULT_URL alfred_nest_data_collector_service policy.hcl
             vault write -address=$VAULT_URL auth/approle/role/alfred_nest_data_collector_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_nest_data_collector_service
   
-#            echo "Storing config..."
-#            read -p "TFLAPIKey Key: " TFLAPIKey
-#            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/TFLAPIKey data=$TFLAPIKey
-#            read -p "Transport API Key: " TransportAPIKey
-#            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/TransportAPIKey data=$TransportAPIKey
+            echo "Storing config..."
+            read -p "Project ID: " ProjectID
+            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/ProjectID data=$ProjectID
+            read -p "Client ID: " ClientID
+            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/ClientID data=$ClientID
+            read -p "Client Secret: " ClientSecret
+            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/ClientSecret data=$ClientSecret
+            vault write -address=$VAULT_URL secret/alfred_nest_data_collector_service/NestTokens data='{}'
             ;;
     No )    echo "Skipping vault setup"
             ;;
@@ -74,11 +77,11 @@ APP_TOKEN=$(echo $VAULES | jq .data.secret_id)
 export APP_TOKEN=${APP_TOKEN:1:${#APP_TOKEN}-2}
 
 echo "Runing the container..."
-#echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-#docker-compose -f docker-compose.yml down
-#docker-compose -f docker-compose.yml pull
-#docker-compose -f docker-compose.yml up -d --build
-#docker logout
+echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
+docker-compose -f docker-compose.yml down
+docker-compose -f docker-compose.yml pull
+docker-compose -f docker-compose.yml up -d --build
+docker logout
 
 echo "Purge docker images..."
 docker image prune -f
