@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: quay.io/influxdb/influxdb:2.0.0-rc
+    environment:
+      INFLUX_TOKEN: ${INFLUX_TOKEN}
+    container_name: influxdb
+    hostname: influxdb
+    restart: always
+    networks:
+      - alfred
+    ports:
+      - 8086:8086
+    volumes:
+      - data:/root/.influxdbv2
+      - bolt:/var/influx/bolt
+      - engine:/var/influx/engine
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+volumes:
+  data:
+  bolt:
+  engine:
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
