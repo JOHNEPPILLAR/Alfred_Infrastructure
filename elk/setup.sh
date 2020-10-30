@@ -5,8 +5,6 @@ echo "Setup/run elk docker container"
 echo "------------------------------"
 echo ""
 
-export ELK_VERSION=7.9.3
-
 echo "Runing the container..."
 docker-compose -f docker-compose.yml down
 docker-compose -f docker-compose.yml pull

@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
+    image: docker.elastic.co/elasticsearch/elasticsearch
     container_name: elasticsearch
     hostname: elasticsearch
     restart: always
@@ -26,7 +26,7 @@ services:
       - alfred
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:${ELK_VERSION}
+    image: docker.elastic.co/kibana/kibana
     container_name: kibana
     hostname: kibana
     restart: always

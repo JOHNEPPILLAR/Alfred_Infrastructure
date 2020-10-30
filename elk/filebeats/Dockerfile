@@ -1,6 +1,4 @@
-ARG ELK_VERSION
-
-FROM docker.elastic.co/beats/filebeat:${ELK_VERSION}
+FROM docker.elastic.co/beats/filebeat
 
 # Copy custom configuration file
 COPY filebeat.yml /usr/share/filebeat/filebeat.yml
