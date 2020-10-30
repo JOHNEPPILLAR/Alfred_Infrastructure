@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  filebeats:
+    build: .
+    image: filebeats
+    container_name: filebeats
+    hostname: filebeats
+    restart: always
+    networks:
+      - alfred
+    volumes:
+      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - ELK_HOST=$ELK_HOST
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
