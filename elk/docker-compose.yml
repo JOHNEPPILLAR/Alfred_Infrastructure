@@ -45,9 +45,9 @@ services:
       - elasticsearch
 
 networks:
-alfred:
-  name: alfred
-  driver: bridge
+  alfred:
+    name: alfred
+    driver: bridge
 
 volumes:
   elasticsearch:
