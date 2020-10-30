@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:${ELK_VERSION}
     container_name: elasticsearch
     hostname: elasticsearch
     restart: always
@@ -26,7 +26,7 @@ services:
       - alfred
 
   kibana:
-    image: docker.elastic.co/kibana/kibana
+    image: docker.elastic.co/kibana/kibana:${ELK_VERSION}
     container_name: kibana
     hostname: kibana
     restart: always
@@ -43,6 +43,25 @@ services:
       - alfred
     depends_on:
       - elasticsearch
+
+  filebeats:
+    build:
+      context: filebeats/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    image: filebeats
+    container_name: filebeats
+    hostname: filebeats
+    restart: always
+    networks:
+      - alfred
+    volumes:
+      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - ELK_HOST=$ELK_HOST
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
 
 networks:
   alfred:

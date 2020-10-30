@@ -3,6 +3,8 @@ version: '3.7'
 services:
   filebeats:
     build: .
+    args:
+      ELK_VERSION: $ELK_VERSION
     image: filebeats
     container_name: filebeats
     hostname: filebeats
