@@ -1,4 +1,5 @@
-filebeat.inputs:
+filebeat:
+  inputs:
     - type: docker
       containers:
         path: '/usr/share/dockerlogs/data'
@@ -8,7 +9,6 @@ filebeat.inputs:
         cri.parse_flags: true
         combine_partial: true
         exclude_files: ['\.gz$']
-  
   processors:
     # decode the message field (sub JSON document) if JSONencoded, then maps it's fields to elasticsearch fields
     - decode_json_fields:
@@ -17,27 +17,28 @@ filebeat.inputs:
         # overwrite existing target elasticsearch fields while decoding json fields
         overwrite_keys: true
     - add_docker_metadata: ~
-  
-  filebeat.config.modules:
+
+  modules:
     path: ${path.config}/modules.d/*.yml
     reload.enabled: false
-  
-  output.elasticsearch:
-    hosts: ['${ELK_HOST}']
-    template:
-      name: 'filebeat'
-      path: 'fields.yml'
-      overwrite: true
-    protocol: 'http'
-  
-  # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
-  logging.level: error
-  logging.to_files: false
-  logging.to_syslog: false
-  loggins.metrice.enabled: false
-  logging.files:
-    path: /var/log/filebeat
-    name: filebeat
-    keepfiles: 7
-    permissions: 0644
-  ssl.verification_mode: none
+
+  output:
+    elasticsearch:
+      hosts: ['${ELK_HOST}']
+      # template:
+      #   name: 'filebeat'
+      #   path: 'fields.yml'
+      #   overwrite: true
+      # protocol: 'http'
+
+# Write Filebeat own logs only to file to avoid catching them with itself in docker log files
+logging.level: error
+logging.to_files: false
+logging.to_syslog: false
+loggins.metrice.enabled: false
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+ssl.verification_mode: none
