@@ -44,7 +44,7 @@ services:
     depends_on:
       - elasticsearch
 
-  filebeats:
+  filebeat:
     image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
     image: filebeat
     container_name: filebeat
