@@ -11,7 +11,6 @@ export ELK_HOST=192.168.1.12:9200
 echo "Runing the container..."
 docker-compose down
 docker-compose pull
-docker-compose build filebeats
 docker-compose up -d
 
 echo "Purge docker images..."
