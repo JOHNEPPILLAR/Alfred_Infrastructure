@@ -25,11 +25,11 @@ filebeat:
   output:
     elasticsearch:
       hosts: ['${ELK_HOST}']
-      # template:
-      #   name: 'filebeat'
-      #   path: 'fields.yml'
-      #   overwrite: true
-      # protocol: 'http'
+      template:
+        name: 'filebeat'
+        path: 'fields.yml'
+        overwrite: true
+      protocol: 'http'
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
