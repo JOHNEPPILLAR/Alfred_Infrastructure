@@ -60,8 +60,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ELK_HOST=$ELK_HOST
-    labels:
-      com.centurylinklabs.watchtower.enable: 'true'
 
 networks:
   alfred:
