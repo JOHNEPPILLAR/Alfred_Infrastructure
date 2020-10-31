@@ -32,7 +32,7 @@ case $SETUP_ELK in
             ;;
     Filebeats ) echo "Setup filebeats"
                 docker-compose rm -f -s filebeat
-                docker-compose pull
+                docker-compose pull filebeat
                 docker-compose up -d filebeat
                 ;;
 esac
