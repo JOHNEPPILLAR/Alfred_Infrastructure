@@ -16,7 +16,7 @@ SETUP_ELK="$1"
 if [ -z "$SETUP_ELK" ]
 then
     echo ""
-    echo "Setup ELK or just Filebeats?"
+    echo "Setup ELK and filebeats or just filebeats?"
     select SETUP_ELK in "ELK" "Filebeats";
     do
         break
@@ -25,14 +25,15 @@ fi
 
 echo ""
 case $SETUP_ELK in
-    ELK )   echo "Setup policies..."
+    ELK )   echo "Setup ELK and filebeats"
             docker-compose down
             docker-compose pull
             docker-compose up -d
             ;;
-    Filebeats ) echo "Skipping vault setup"
-                docker-compose down filebeats
-                docker-compose pull filebeats
+    Filebeats ) echo "Setup filebeats"
+                docker container stop filebeats
+                docker container rm filebeats
+                docker pull docker.elastic.co/beats/filebeat:${ELK_VERSION}
                 docker-compose up -d filebeats
                 ;;
 esac

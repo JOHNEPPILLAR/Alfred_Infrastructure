@@ -46,12 +46,10 @@ services:
 
   filebeats:
     image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
-    image: filebeats
-    container_name: filebeats
-    hostname: filebeats
+    image: filebeat
+    container_name: filebeat
+    hostname: filebeat
     restart: always
-    labels:
-      com.centurylinklabs.watchtower.enable: 'true'
     networks:
       - alfred
     volumes:
