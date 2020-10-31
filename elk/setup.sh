@@ -31,9 +31,8 @@ case $SETUP_ELK in
             docker-compose up -d
             ;;
     Filebeats ) echo "Setup filebeats"
-                docker container stop filebeat
-                docker container rm filebeat
-                docker pull docker.elastic.co/beats/filebeat:${ELK_VERSION}
+                docker-compose rm -f -s filebeat
+                docker-compose pull
                 docker-compose up -d filebeat
                 ;;
 esac
