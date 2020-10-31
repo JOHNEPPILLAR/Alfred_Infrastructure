@@ -45,17 +45,20 @@ services:
       - elasticsearch
 
   filebeats:
-    build:
-      context: filebeats/
-      args:
-        ELK_VERSION: $ELK_VERSION
+    image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
     image: filebeats
     container_name: filebeats
     hostname: filebeats
     restart: always
+    labels:
+      com.centurylinklabs.watchtower.enable: 'true'
     networks:
       - alfred
     volumes:
+      - type: bind
+        source: ./filebeat/config/filebeat.yml
+        target: /usr/share/filebeat/filebeat.yml
+        read_only: true
       - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
