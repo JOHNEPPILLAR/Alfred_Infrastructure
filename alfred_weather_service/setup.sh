@@ -29,7 +29,7 @@ export ENVIRONMENT=$ENVIRONMENT
 export PORT=3978
 export ALFRED_NETATMO_SERVICE="https://alfred_netatmo_data_collector_service:3978"
 export ALFRED_DYSON_SERVICE="https://alfred_dyson_data_collector_service:3978"
-export TRACE_LEVEL=""
+export TRACE_LEVEL="info"
 
 SETUP_VAULT="$2"
 if [ -z "$SETUP_VAULT" ]

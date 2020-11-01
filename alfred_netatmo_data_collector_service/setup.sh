@@ -27,7 +27,7 @@ esac
 export ENVIRONMENT=$ENVIRONMENT
 
 export PORT=3978
-export TRACE_LEVEL=""
+export TRACE_LEVEL="info"
 
 SETUP_VAULT="$2"
 if [ -z "$SETUP_VAULT" ]

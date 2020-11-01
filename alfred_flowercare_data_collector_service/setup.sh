@@ -57,7 +57,7 @@ esac
 export ZONE=$ZONE
 
 export PORT=3981
-export TRACE_LEVEL=""
+export TRACE_LEVEL="info"
 
 SETUP_VAULT="$3"
 if [ -z "$SETUP_VAULT" ]

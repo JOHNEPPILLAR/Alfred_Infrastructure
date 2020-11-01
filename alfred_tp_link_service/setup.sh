@@ -28,7 +28,7 @@ export ENVIRONMENT=$ENVIRONMENT
 
 export PORT=3984
 export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3981/weather"
-export TRACE_LEVEL=""
+export TRACE_LEVEL="info"
 
 SETUP_VAULT="$2"
 if [ -z "$SETUP_VAULT" ]
