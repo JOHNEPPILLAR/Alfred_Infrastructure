@@ -46,17 +46,15 @@ services:
 
   filebeat:
     image: docker.elastic.co/beats/filebeat:${ELK_VERSION}
+    user: root
     container_name: filebeat
     hostname: filebeat
     restart: always
     networks:
       - alfred
     volumes:
-      - type: bind
-        source: ./filebeat/config/filebeat.yml
-        target: /usr/share/filebeat/filebeat.yml
-        read_only: true
-      - /var/lib/docker/containers:/usr/share/dockerlogs/data:ro
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - /var/lib/docker:/var/lib/docker:ro
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - ELK_HOST=$ELK_HOST

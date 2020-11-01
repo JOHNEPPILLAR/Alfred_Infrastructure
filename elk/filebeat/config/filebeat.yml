@@ -1,35 +1,22 @@
-filebeat.modules:
-  #path: ${path.config}/modules.d/*.yml
-  #reload.enabled: false
-
 filebeat.inputs:
-  - type: docker
-    containers:
-      path: '/usr/share/dockerlogs/data'
-      stream: 'stdout'
-      ids:
-        - '*'
-      cri.parse_flags: true
-      combine_partial: true
-      exclude_files: ['\.gz$']
+  - type: container
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
 
 processors:
-  # decode the message field (sub JSON document) if JSONencoded, then maps it's fields to elasticsearch fields
+  - add_docker_metadata:
+    host: 'unix:///var/run/docker.sock'
+
   - decode_json_fields:
       fields: ['message']
-      target: ''
-      # overwrite existing target elasticsearch fields while decoding json fields
+      target: 'json'
       overwrite_keys: true
-  - add_docker_metadata: ~
 
 output.elasticsearch:
   enabled: true
   hosts: ['${ELK_HOST}']
-  protocol: 'http'
-  template:
-    name: 'filebeat'
-    path: 'fields.yml'
-    overwrite: true
+  indices:
+    - index: 'filebeat-%{[agent.version]}-%{+yyyy.MM.dd}'
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
