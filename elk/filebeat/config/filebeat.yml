@@ -1,3 +1,7 @@
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
 filebeat.inputs:
   - type: docker
     containers:
@@ -10,8 +14,7 @@ filebeat.inputs:
       exclude_files: ['\.gz$']
 
 processors:
-  - add_docker_metadata:
-      host: 'unix:///var/run/docker.sock'
+  - add_docker_metadata: ~
 
   - decode_json_fields:
       fields: ['message']
@@ -21,8 +24,10 @@ processors:
 output.elasticsearch:
   enabled: true
   hosts: ['${ELK_HOST}']
-  indices:
-    - index: 'filebeat-%{[agent.version]}-%{+yyyy.MM.dd}'
+  template:
+    name: 'filebeat'
+    path: 'fields.yml'
+    overwrite: true
 
 # Write Filebeat own logs only to file to avoid catching them with itself in docker log files
 logging.level: error
