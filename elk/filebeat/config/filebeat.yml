@@ -1,7 +1,13 @@
 filebeat.inputs:
-  - type: container
-    paths:
-      - '/var/lib/docker/containers/*/*.log'
+  - type: docker
+    containers:
+      path: '/var/lib/docker/containers'
+      stream: 'stdout'
+      ids:
+        - '*'
+      cri.parse_flags: true
+      combine_partial: true
+      exclude_files: ['\.gz$']
 
 processors:
   - add_docker_metadata:
