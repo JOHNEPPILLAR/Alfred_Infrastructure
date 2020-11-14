@@ -71,7 +71,7 @@ echo "Runing the container..."
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
 docker-compose down
 docker-compose pull
-docker-compose up -d --build
+docker-compose up -d
 docker logout
 
 echo "Purge docker images..."
