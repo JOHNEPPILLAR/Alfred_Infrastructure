@@ -6,17 +6,22 @@ services:
     container_name: alfred_lights_service
     hostname: alfred_lights_service
     restart: always
-    network_mode: 'host'
-    privileged: true
-    command: npm run start
+    networks:
+      - alfred
+    command: node lib/server/server.js
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - MOCK=${MOCK}
       - PORT=${PORT}
-      - ALFRED_WEATHER_SERVICE=${ALFRED_WEATHER_SERVICE}
       - VAULT_URL=${VAULT_URL}
       - APP_ROLE_ID=${APP_ROLE_ID}
       - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
+      - ALFRED_WEATHER_SERVICE=${ALFRED_WEATHER_SERVICE}
     labels:
       com.centurylinklabs.watchtower.enable: 'true'
+
+networks:
+  alfred:
+    name: alfred
+    driver: bridge
