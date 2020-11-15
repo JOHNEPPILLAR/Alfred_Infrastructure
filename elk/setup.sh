@@ -5,7 +5,7 @@ echo "Setup/run elk docker container"
 echo "------------------------------"
 echo ""
 
-export ELK_VERSION=7.9.3
+export ELK_VERSION=7.10
 export ELK_HOST=192.168.1.12:9200
 
 echo "Set permissions on config file"
