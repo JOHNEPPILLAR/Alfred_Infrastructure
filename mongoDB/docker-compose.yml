@@ -15,8 +15,6 @@ services:
     volumes:
       - mongodb:/data/db
       - mongo_config:/data/configdb
-    labels:
-      com.centurylinklabs.watchtower.enable: 'true'
 
 volumes:
   mongodb:
