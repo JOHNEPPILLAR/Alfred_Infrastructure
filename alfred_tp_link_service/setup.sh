@@ -27,7 +27,7 @@ esac
 export ENVIRONMENT=$ENVIRONMENT
 
 export PORT=3984
-export ALFRED_WEATHER_SERVICE="https://alfred_weather_service:3978"
+export ALFRED_WEATHER_SERVICE="https://johnpillar.me:3981/weather"
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$2"
