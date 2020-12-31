@@ -27,8 +27,8 @@ esac
 export ENVIRONMENT=$ENVIRONMENT
 
 export PORT=3978
-export ALFRED_NETATMO_SERVICE="https://alfred_netatmo_data_collector_service:3978"
-export ALFRED_DYSON_SERVICE="https://alfred_dyson_data_collector_service:3978"
+export ALFRED_NETATMO_SERVICE="https://johnpillar.me:3981/netatmo"
+export ALFRED_DYSON_SERVICE="https://johnpillar.me:3981/dyson"
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$2"
