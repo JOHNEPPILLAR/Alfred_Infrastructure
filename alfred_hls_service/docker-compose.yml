@@ -17,7 +17,6 @@ services:
       - APP_ROLE_ID=${APP_ROLE_ID}
       - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
-      - DEBUG="HLS:*"
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     ports:
