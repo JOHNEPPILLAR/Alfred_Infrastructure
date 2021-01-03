@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   alfred_hls_service:
@@ -17,10 +17,11 @@ services:
       - APP_ROLE_ID=${APP_ROLE_ID}
       - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
+      - DEBUG="HLS:*"
     labels:
-      com.centurylinklabs.watchtower.enable: 'true'
+      com.centurylinklabs.watchtower.enable: "true"
     ports:
-      - '3980:3978'
+      - "3980:3978"
 
 networks:
   alfred:
