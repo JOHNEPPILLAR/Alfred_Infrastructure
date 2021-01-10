@@ -19,8 +19,6 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-    ports:
-      - "3980:3978"
 
 networks:
   alfred:
