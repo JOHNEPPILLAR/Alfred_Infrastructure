@@ -46,20 +46,19 @@ case $ZONE in
                       export NO_SCAN="false";;
     server )          export ZONE="0"
                       export NO_SCHEDULE="false"
-                      export NO_SCAN="true";;
+                      export NO_SCAN="true"
+                      echo "Creating certs..."
+                      mkcert alfred_flowercare_data_collector_service
+                      echo "Storing certs..."
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
+                      echo "Tidying up certs..."
+                      rm *.pem;;
     "living room" )   export ZONE="5"
                       export NO_SCHEDULE="true"
                       export NO_SCAN="false";;
     *) echo "Invalid zone, exit setup"; exit;;
 esac
-
-echo "Creating certs..."
-mkcert alfred_flowercare_data_collector_service
-echo "Storing certs..."
-vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
-vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
-echo "Tidying up certs...";;
-rm *.pem;;
 
 export ZONE=$ZONE
 export PORT=3981
