@@ -27,17 +27,17 @@ esac
 export ENVIRONMENT=$ENVIRONMENT
 
 ENVIRONMENT="$2"
-if [ -z "$ZONE" ]
+if [ -z "$LOCATION" ]
 then
     echo ""
     echo "Select an zone:"
-    select ZONE in "kids bedroom" "office" "server" "living room"; 
+    select LOCATION in "kids bedroom" "office" "server" "living room"; 
     do
         break
     done
 fi
 
-case $ZONE in
+case $LOCATION in
     "kids bedroom" )  export PORT=3978
                       export ZONE="1,2"
                       export NO_SCHEDULE="true"
@@ -64,7 +64,6 @@ case $ZONE in
     *) echo "Invalid zone, exit setup"; exit;;
 esac
 
-export ZONE=$ZONE
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$3"
@@ -111,7 +110,7 @@ export APP_TOKEN=${APP_TOKEN:1:${#APP_TOKEN}-2}
 echo "Runing the container..."
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
 
-case $ZONE in
+case $LOCATION in
     "kids bedroom" )    docker-compose -f docker-compose-ncu.yml down
                         docker-compose -f docker-compose-ncu.yml pull
                         docker-compose -f docker-compose-ncu.yml up -d;;
