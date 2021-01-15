@@ -38,13 +38,16 @@ then
 fi
 
 case $ZONE in
-    "kids bedroom" )  export ZONE="1,2"
+    "kids bedroom" )  export PORT=3978
+                      export ZONE="1,2"
                       export NO_SCHEDULE="true"
                       export NO_SCAN="false";;
-    office )          export ZONE="3,4"
+    office )          export PORT=3981
+                      export ZONE="3,4"
                       export NO_SCHEDULE="true"
                       export NO_SCAN="false";;
-    server )          export ZONE="0"
+    server )          export PORT=3978
+                      export ZONE="0"
                       export NO_SCHEDULE="false"
                       export NO_SCAN="true"
                       echo "Creating certs..."
@@ -54,14 +57,14 @@ case $ZONE in
                       vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
                       echo "Tidying up certs..."
                       rm *.pem;;
-    "living room" )   export ZONE="5"
+    "living room" )   export PORT=3981
+                      export ZONE="5"
                       export NO_SCHEDULE="true"
                       export NO_SCAN="false";;
     *) echo "Invalid zone, exit setup"; exit;;
 esac
 
 export ZONE=$ZONE
-export PORT=3981
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$3"
@@ -107,9 +110,23 @@ export APP_TOKEN=${APP_TOKEN:1:${#APP_TOKEN}-2}
 
 echo "Runing the container..."
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
-docker-compose -f docker-compose.yml down
-docker-compose -f docker-compose.yml pull
-docker-compose -f docker-compose.yml up -d --build
+
+case $ZONE in
+    "kids bedroom" )    docker-compose -f docker-compose-ncu.yml down
+                        docker-compose -f docker-compose-ncu.yml pull
+                        docker-compose -f docker-compose-ncu.yml up -d;;
+    office )            docker-compose -f docker-compose-rpi.yml down
+                        docker-compose -f docker-compose-rpi.yml pull
+                        docker-compose -f docker-compose-rpi.yml up -d;;
+    server )            docker-compose -f docker-compose.yml down
+                        docker-compose -f docker-compose.yml pull
+                        docker-compose -f docker-compose.yml up -d;;
+    "living room" )     docker-compose -f docker-compose-rpi.yml down
+                        docker-compose -f docker-compose-rpi.yml pull
+                        docker-compose -f docker-compose-rpi.yml up -d;;
+    *) echo "Invalid zone, exit setup"; exit;;
+esac
+
 docker logout
 
 echo "Purge docker images..."
