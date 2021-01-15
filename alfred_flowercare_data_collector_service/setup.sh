@@ -25,6 +25,7 @@ case $ENVIRONMENT in
     *) echo "Invalid enviroment, exit setup"; exit;;
 esac
 export ENVIRONMENT=$ENVIRONMENT
+echo "Set ENVIRONMENT to: " $ENVIRONMENT
 
 ENVIRONMENT="$2"
 if [ -z "$LOCATION" ]
@@ -63,6 +64,7 @@ case $LOCATION in
                       export NO_SCAN="false";;
     *) echo "Invalid zone, exit setup"; exit;;
 esac
+echo "Set LOCATION to: " $LOCATION
 
 export TRACE_LEVEL="info"
 
