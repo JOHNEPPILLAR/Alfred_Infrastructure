@@ -31,7 +31,7 @@ if [ -z "$ZONE" ]
 then
     echo ""
     echo "Select an zone:"
-    select ZONE in "kids bedroom" "office" "living room"; 
+    select ZONE in "kids bedroom" "office" "server" "living room"; 
     do
         break
     done
