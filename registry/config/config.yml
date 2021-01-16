@@ -11,8 +11,6 @@ http:
   addr: :5001
   headers:
     X-Content-Type-Options: [nosniff]
-    Access-Control-Allow-Origin: ["http://alfredserver:81"]
-    Access-Control-Allow-Methods: ["HEAD", "GET", "OPTIONS", "DELETE"]
 health:
   storagedriver:
     enabled: true
