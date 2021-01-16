@@ -28,15 +28,6 @@ export ENVIRONMENT=$ENVIRONMENT
 echo "Set ENVIRONMENT to: " $ENVIRONMENT
 
 export PORT=3978
-
-echo "Creating certs..."
-mkcert alfred_house_plants_service
-echo "Storing certs..."
-vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_key data=@alfred_house_plants_service-key.pem
-vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_cert data=@alfred_house_plants_service.pem
-echo "Tidying up certs..."
-rm *.pem
-
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$3"
@@ -59,6 +50,14 @@ case $SETUP_VAULT in
     No )    echo "Skipping vault setup"
             ;;
 esac
+
+echo "Creating certs..."
+mkcert alfred_house_plants_service
+echo "Storing certs..."
+vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_key data=@alfred_house_plants_service-key.pem
+vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_cert data=@alfred_house_plants_service.pem
+echo "Tidying up certs..."
+rm *.pem
 
 echo "Creating access token..."
 VAULES=$(vault read -address=$VAULT_URL -format=json auth/approle/role/alfred_flower_service_role/role-id)
