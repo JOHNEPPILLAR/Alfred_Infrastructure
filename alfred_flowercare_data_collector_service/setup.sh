@@ -39,33 +39,14 @@ then
 fi
 
 case $LOCATION in
-    "kids bedroom" )  export PORT=3978
-                      export ZONE="1,2"
-                      export NO_SCHEDULE="true"
-                      export NO_SCAN="false";;
-    office )          export PORT=3981
-                      export ZONE="3,4"
-                      export NO_SCHEDULE="true"
-                      export NO_SCAN="false";;
-    server )          export PORT=3978
-                      export ZONE="0"
-                      export NO_SCHEDULE="false"
-                      export NO_SCAN="true"
-                      echo "Creating certs..."
-                      mkcert alfred_flowercare_data_collector_service
-                      echo "Storing certs..."
-                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
-                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
-                      echo "Tidying up certs..."
-                      rm *.pem;;
-    "living room" )   export PORT=3981
-                      export ZONE="5"
-                      export NO_SCHEDULE="true"
-                      export NO_SCAN="false";;
+    "kids bedroom" )  export ZONE="1,2";;
+    office )          export ZONE="3,4";;
+    "living room" )   export ZONE="5";;
     *) echo "Invalid zone, exit setup"; exit;;
 esac
 echo "Set LOCATION to: " $LOCATION
 
+export PORT=3981
 export TRACE_LEVEL="info"
 
 SETUP_VAULT="$3"
@@ -109,24 +90,22 @@ VAULES=$(vault write -f --format=json -address=$VAULT_URL auth/approle/role/alfr
 APP_TOKEN=$(echo $VAULES | jq .data.secret_id)
 export APP_TOKEN=${APP_TOKEN:1:${#APP_TOKEN}-2}
 
+case $LOCATION in
+    "kids bedroom" )  echo "Creating certs..."
+                      mkcert alfred_flowercare_data_collector_service
+                      echo "Storing certs..."
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_key data=@alfred_flowercare_data_collector_service-key.pem
+                      vault write -address=$VAULT_URL secret/alfred_flowercare_data_collector_service/ssl_cert data=@alfred_flowercare_data_collector_service.pem
+                      echo "Tidying up certs..."
+                      rm *.pem;;
+esac
+
 echo "Runing the container..."
 echo $DOCKER_REGISTERY_PASSWORD | docker login $DOCKER_REGISTERY_URL -u $DOCKER_REGISTERY_USERNAME --password-stdin 
 
-case $LOCATION in
-    "kids bedroom" )    docker-compose -f docker-compose-ncu.yml down
-                        docker-compose -f docker-compose-ncu.yml pull
-                        docker-compose -f docker-compose-ncu.yml up -d;;
-    office )            docker-compose -f docker-compose-rpi.yml down
-                        docker-compose -f docker-compose-rpi.yml pull
-                        docker-compose -f docker-compose-rpi.yml up -d;;
-    server )            docker-compose -f docker-compose.yml down
-                        docker-compose -f docker-compose.yml pull
-                        docker-compose -f docker-compose.yml up -d;;
-    "living room" )     docker-compose -f docker-compose-rpi.yml down
-                        docker-compose -f docker-compose-rpi.yml pull
-                        docker-compose -f docker-compose-rpi.yml up -d;;
-    *) echo "Invalid zone, exit setup"; exit;;
-esac
+docker-compose down
+docker-compose pull
+docker-compose up -d
 
 docker logout
 
