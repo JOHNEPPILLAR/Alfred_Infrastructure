@@ -32,7 +32,7 @@ if [ -z "$LOCATION" ]
 then
     echo ""
     echo "Select an zone:"
-    select LOCATION in "kids bedroom" "office" "server" "living room"; 
+    select LOCATION in "kids bedroom" "office" "living room"; 
     do
         break
     done
