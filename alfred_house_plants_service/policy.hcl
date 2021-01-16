@@ -2,7 +2,7 @@
 path "sys/*" {
   policy = "deny"
 }
-path "secret/alfred_house_flowers_service/*" {
+path "secret/alfred_house_plants_service/*" {
   policy = "read"
 }
 path "secret/alfred_common/*" {

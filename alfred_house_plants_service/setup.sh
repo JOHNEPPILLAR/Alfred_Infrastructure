@@ -30,10 +30,10 @@ echo "Set ENVIRONMENT to: " $ENVIRONMENT
 export PORT=3978
 
 echo "Creating certs..."
-mkcert alfred_house_flowers_service
+mkcert alfred_house_plants_service
 echo "Storing certs..."
-vault write -address=$VAULT_URL secret/alfred_house_flowers_service/ssl_key data=@alfred_house_flowers_service-key.pem
-vault write -address=$VAULT_URL secret/alfred_house_flowers_service/ssl_cert data=@alfred_house_flowers_service.pem
+vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_key data=@alfred_house_plants_service-key.pem
+vault write -address=$VAULT_URL secret/alfred_house_plants_service/ssl_cert data=@alfred_house_plants_service.pem
 echo "Tidying up certs..."
 rm *.pem
 
@@ -53,8 +53,8 @@ fi
 echo ""
 case $SETUP_VAULT in
     Yes )   echo "Setup policies..."
-            vault policy write -address=$VAULT_URL alfred_house_flowers_service policy.hcl
-            vault write -address=$VAULT_URL auth/approle/role/alfred_house_flowers_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_house_flowers_service
+            vault policy write -address=$VAULT_URL alfred_house_plants_service policy.hcl
+            vault write -address=$VAULT_URL auth/approle/role/alfred_house_plants_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_house_plants_service
             ;;
     No )    echo "Skipping vault setup"
             ;;
