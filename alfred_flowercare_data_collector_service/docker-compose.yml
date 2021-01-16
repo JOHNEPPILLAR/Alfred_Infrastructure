@@ -6,8 +6,8 @@ services:
     container_name: alfred_flowercare_data_collector_service
     hostname: alfred_flowercare_data_collector_service
     restart: always
-    networks:
-      - alfred
+    network_mode: "host"
+    privileged: true
     command: npm run start
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
@@ -21,8 +21,3 @@ services:
       - SERVER_NAME=${SERVER_NAME}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
-
-networks:
-  alfred:
-    name: alfred
-    driver: bridge
