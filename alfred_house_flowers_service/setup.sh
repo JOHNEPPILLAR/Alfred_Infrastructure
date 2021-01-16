@@ -1,8 +1,8 @@
 #!/bin/bash
 clear
 
-echo "Setup/run alfred flower service docker container"
-echo "------------------------------------------------"
+echo "Setup/run alfred house flowers service docker container"
+echo "-------------------------------------------------------"
 echo ""
 
 echo "Loging into vault..."
@@ -30,10 +30,10 @@ echo "Set ENVIRONMENT to: " $ENVIRONMENT
 export PORT=3978
 
 echo "Creating certs..."
-mkcert alfred_flower_service
+mkcert alfred_house_flowers_service
 echo "Storing certs..."
-vault write -address=$VAULT_URL secret/alfred_flower_service/ssl_key data=@alfred_flower_service-key.pem
-vault write -address=$VAULT_URL secret/alfred_flower_service/ssl_cert data=@alfred_flower_service.pem
+vault write -address=$VAULT_URL secret/alfred_house_flowers_service/ssl_key data=@alfred_house_flowers_service-key.pem
+vault write -address=$VAULT_URL secret/alfred_house_flowers_service/ssl_cert data=@alfred_house_flowers_service.pem
 echo "Tidying up certs..."
 rm *.pem
 
@@ -53,8 +53,8 @@ fi
 echo ""
 case $SETUP_VAULT in
     Yes )   echo "Setup policies..."
-            vault policy write -address=$VAULT_URL alfred_flower_service policy.hcl
-            vault write -address=$VAULT_URL auth/approle/role/alfred_flower_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_flower_service
+            vault policy write -address=$VAULT_URL alfred_house_flowers_service policy.hcl
+            vault write -address=$VAULT_URL auth/approle/role/alfred_house_flowers_service_role token_ttl=1m token_max_ttl=2m token_policies=alfred_house_flowers_service
             ;;
     No )    echo "Skipping vault setup"
             ;;

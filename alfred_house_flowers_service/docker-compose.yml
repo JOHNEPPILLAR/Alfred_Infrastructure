@@ -2,9 +2,9 @@ version: "3.7"
 
 services:
   alfred_flower_service:
-    image: ${DOCKER_REGISTERY_URL}/alfred_flower_service
-    container_name: alfred_flower_service
-    hostname: alfred_flower_service
+    image: ${DOCKER_REGISTERY_URL}/alfred_house_flowers_service
+    container_name: alfred_house_flowers_service
+    hostname: alfred_house_flowers_service
     restart: always
     networks:
       - alfred
