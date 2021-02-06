@@ -11,6 +11,7 @@ services:
     command: node lib/server/server.js
     volumes:
       - media_library:/home/nodejs/app/media
+    privileged: true
     cap_add:
       - SYS_ADMIN
       - DAC_READ_SEARCH
