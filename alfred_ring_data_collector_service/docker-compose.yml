@@ -1,7 +1,7 @@
-version: "3.7"
+version: "3.9"
 
 services:
-  alfred_commute_service:
+  alfred_ring_data_collector_service:
     image: ${DOCKER_REGISTERY_URL}/alfred_ring_data_collector_service:latest
     container_name: alfred_ring_data_collector_service
     hostname: alfred_ring_data_collector_service
@@ -24,6 +24,7 @@ services:
 
 volumes:
   media_library:
+    external: true
 
 networks:
   alfred:
