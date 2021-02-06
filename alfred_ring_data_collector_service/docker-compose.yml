@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   alfred_commute_service:
@@ -10,7 +10,7 @@ services:
       - alfred
     command: node lib/server/server.js
     volumes:
-      - media:/home/nodejs/app/media
+      - media_library:/home/nodejs/app/media
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - MOCK=${MOCK}
@@ -20,10 +20,10 @@ services:
       - APP_TOKEN=${APP_TOKEN}
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
-      com.centurylinklabs.watchtower.enable: 'true'
+      com.centurylinklabs.watchtower.enable: "true"
 
 volumes:
-  media:
+  media_library:
 
 networks:
   alfred:
