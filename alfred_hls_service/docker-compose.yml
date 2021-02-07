@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 services:
   alfred_hls_service:
@@ -9,6 +9,8 @@ services:
     networks:
       - alfred
     command: npm run start
+    volumes:
+      - media_library:/home/nodejs/app/media
     environment:
       - ENVIRONMENT=${ENVIRONMENT}
       - MOCK=${MOCK}
@@ -19,6 +21,10 @@ services:
       - TRACE_LEVEL=${TRACE_LEVEL}
     labels:
       com.centurylinklabs.watchtower.enable: "true"
+
+volumes:
+  media_library:
+    external: true
 
 networks:
   alfred:
